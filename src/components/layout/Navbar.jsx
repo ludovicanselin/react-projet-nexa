@@ -1,24 +1,12 @@
 import {Link, useLocation} from "react-router";
 import {useEffect, useState} from "react";
+import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline"
 
 export default function Navbar() {
 
     const location = useLocation();
     const [path, setPath] = useState("");
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener("resize", handleWindowResize);
-        }
-    }, []);
 
     useEffect(() => {
         setPath(location.pathname);
@@ -27,8 +15,11 @@ export default function Navbar() {
     return (
         <>
             <nav className={"bg-secondary text-white p-4 mb-4"}>
-                {windowWidth <= 768 && <button className={`${open && "mb-4"}`} onClick={() => setOpen(!open)}>{open ? "Fermer" : "Ouvrir"}</button>}
-                <ul className={`flex ${windowWidth > 768 ? "flex-row" : "flex-col"} justify-center gap-4 ${(!open && windowWidth <= 768) ? "hidden" : ""}`}>
+                <button className={`${open && "mb-4"} md:hidden`}
+                        onClick={() => setOpen(!open)}>
+                    {open ? <XMarkIcon className="size-6"/> : <Bars3Icon className="size-6"/>}
+                </button>
+                <ul className={`flex flex-col justify-center gap-4 ${!open && "hidden"} md:flex md:flex-row`}>
                     <li>
                         <Link to="/" className={path === "/" ? "underline" : ""}>Home</Link>
                     </li>
