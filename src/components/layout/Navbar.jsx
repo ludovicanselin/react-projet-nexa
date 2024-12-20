@@ -9,10 +9,12 @@ export default function Navbar() {
     return (
         <>
             <nav className={"bg-secondary text-white p-4 mb-4"}>
+
                 <button className={`${open && "mb-4"} md:hidden`}
                         onClick={() => setOpen(!open)}>
                     {open ? <XMarkIcon className="size-6"/> : <Bars3Icon className="size-6"/>}
                 </button>
+
                 <ul className={`flex flex-col justify-center gap-4 ${!open && "hidden"} md:flex md:flex-row`}>
                     <li>
                         <NavLink to="/"
