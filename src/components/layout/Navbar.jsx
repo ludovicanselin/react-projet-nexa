@@ -1,6 +1,18 @@
 import {NavLink} from "react-router";
 import {useState} from "react";
-import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline"
+import {Bars3Icon, HomeIcon, IdentificationIcon, XMarkIcon} from "@heroicons/react/24/outline"
+
+const navLink = [
+    {
+        path: "/",
+        label: "Home",
+        icon: <HomeIcon className={`size-6`}/>
+    }, {
+        path: "/about",
+        label: "About",
+        icon: <IdentificationIcon className={`size-6`}/>
+    }
+]
 
 export default function Navbar() {
 
@@ -16,36 +28,18 @@ export default function Navbar() {
                 </button>
 
                 <ul className={`flex flex-col justify-center gap-4 ${!open && "hidden"} md:flex md:flex-row`}>
-                    <li>
-                        <NavLink to="/"
-                                 className={({isActive}) => isActive && "underline"}>
-                            Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/about"
-                                 className={({isActive}) => isActive && "underline"}>
-                            About
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/other-page1"
-                                 className={({isActive}) => isActive && "underline"}>
-                            Other Page 1
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/other-page2"
-                                 className={({isActive}) => isActive && "underline"}>
-                            Other Page 2
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/other-page3"
-                                 className={({isActive}) => isActive && "underline"}>
-                            Other Page 3
-                        </NavLink>
-                    </li>
+                    {navLink.map((link) => (
+                        <li key={link.label}>
+                            <NavLink to={link.path}
+                                     onClick={() => setOpen(false)}
+                                     className={({isActive}) => {
+                                         return `${isActive && "underline"} flex flex-row gap-2`
+                                     }}>
+                                <span>{link.icon}</span>
+                                <span>{link.label}</span>
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </>
