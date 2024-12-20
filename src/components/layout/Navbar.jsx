@@ -1,6 +1,6 @@
 import {NavLink} from "react-router";
 import {useState} from "react";
-import {Bars3Icon, HomeIcon, IdentificationIcon, XMarkIcon} from "@heroicons/react/24/outline"
+import {Bars3Icon, HomeIcon, IdentificationIcon, UserIcon, XMarkIcon} from "@heroicons/react/24/outline"
 
 const navLink = [
     {
@@ -11,6 +11,14 @@ const navLink = [
         path: "/about",
         label: "About",
         icon: <IdentificationIcon className={`size-6`}/>
+    }, {
+        path: "/user/1",
+        label: "Voir Utilisateur 1",
+        icon: <UserIcon className={`size-6`}/>
+    }, {
+        path: "/user/2",
+        label: "Voir Utilisateur 2",
+        icon: <UserIcon className={`size-6`}/>
     }
 ]
 
