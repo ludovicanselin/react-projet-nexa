@@ -33,13 +33,13 @@ export default function Navbar() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/other-page1"
+                        <NavLink to="/other-page2"
                                  className={({isActive}) => isActive && "underline"}>
                             Other Page 2
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/other-page1"
+                        <NavLink to="/other-page3"
                                  className={({isActive}) => isActive && "underline"}>
                             Other Page 3
                         </NavLink>
