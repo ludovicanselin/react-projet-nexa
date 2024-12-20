@@ -9,22 +9,15 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        function onChangeToMobile() {
-            setOpen(false);
-        }
-
-        function onChangeToDesktop() {
-
-        }
-
-        window.addEventListener('resize', () => {
+        const handleWindowResize = () => {
             setWindowWidth(window.innerWidth);
-            if (windowWidth > 768 && window.innerWidth <= 768) {
-                onChangeToMobile();
-            } else if (windowWidth <= 768 && window.innerWidth > 768) {
-                onChangeToDesktop();
-            }
-        });
+        };
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        }
     }, []);
 
     useEffect(() => {
